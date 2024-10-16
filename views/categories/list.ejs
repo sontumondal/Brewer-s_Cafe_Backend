@@ -1,0 +1,56 @@
+<%- include("../partial/header") %>
+    <div class="main_dashboard_section no_search">
+        <div class="container-fluid mt-4 mb-4">
+            <h2>Categories List</h2>
+
+            <div class="main_card_product_side">
+                <div class="container-fluid">
+                    <div class="row">
+                        <% category?.map((data)=> { %>
+                            <div class="col-xl-3 col-sm-6 my-3">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <% if (data.image) { %>
+                                            <img src="<%= data.image %>" alt="<%= data.name %>"
+                                               >
+                                            <% } else { %>
+                                                <img src="https://via.placeholder.com/150" alt="No Image"
+                                                    >
+                                                <% } %>
+                                                    <div class="action-buttons">
+                                                        <a href="/api/categories/edit/<%= data._id %>">
+                                                            <button class="edit-btn"><i
+                                                                    class="fas fa-edit"></i></button>
+                                                        </a>
+                                                        <a href="/api/categories/delete/<%= data._id %>">
+                                                            <button class="delete-btn"><i
+                                                                    class="fas fa-trash-alt"></i></button>
+                                                        </a>
+                                                        <a href="/api/categories">
+                                                            <button class="update-btn"><i
+                                                                    class="fa-solid fa-plus"></i></button>
+                                                        </a>
+                                                    </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h2 class="product-name"><i class="fas fa-box-open"></i>
+                                            <%= data.name %>
+                                        </h2>
+                                        <p class="product-description">
+                                            <i class="fas fa-info-circle"></i>
+                                            <%= data.description || 'No description available' %>
+                                                <!-- <span class="read-more"><a
+                                                        href="/api/categories/view/<%= data._id %>">Read More</a></span> -->
+                                        </p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("../partial/footer") %>

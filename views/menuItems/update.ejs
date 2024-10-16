@@ -1,0 +1,112 @@
+<%- include("../partial/header") %> <!-- Assuming you have a header partial -->
+
+  <div class="main_dashboard_section">
+    <section class="main_menu_items_section">
+      <div class="main_wrapper_form">
+        <div class="container">
+          <h2>Edit Menu Item</h2>
+
+          <form action="/api/menu-items/update/<%= menuItem._id %>" method="POST" enctype="multipart/form-data">
+            <div class="row mt-4">
+              <!-- Name -->
+              <div class="col-md-6">
+                <div class="form-group mb-2">
+                  <label for="name" class="">Menu Item Name <span>*</span></label>
+                  <input type="text" class="" id="name" name="name" value="<%= menuItem.name %>"
+                    placeholder="Enter menu item name" required>
+                </div>
+              </div>
+
+              <!-- Price -->
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label for="price" class="">Price <span>*</span></label>
+                  <input type="number" class="" id="price" name="price" value="<%= menuItem.price %>"
+                    placeholder="Enter price" required>
+                </div>
+              </div>
+
+              <!-- Discount -->
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label for="discount" class="">Discount (optional)</label>
+                  <input type="number" class="" id="discount" name="discount" value="<%= menuItem.discount %>"
+                    placeholder="Enter discount (optional)">
+                </div>
+              </div>
+
+              <!-- Category -->
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label for="category" class="">Category <span>*</span></label>
+                  <select class="" id="categoryId" name="categoryId" required>
+                    <option value="" disabled>Select a category</option>
+                    <% categories.forEach(function(category) { %>
+                      <option value="<%= category._id %>" <%=category._id.equals(menuItem.category) ? 'selected' : '' %>
+                        ><%= category.name %>
+                      </option>
+                      <% }); %>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Description -->
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label for="description" class="">Description <span>*</span></label>
+                  <textarea class="" id="description" name="description" rows="3"
+                    placeholder="Enter a description"><%= menuItem.description %></textarea>
+                </div>
+              </div>
+
+              <!-- Ingredients -->
+              <div class="col-md-6">
+                <div class="form-group mb-4">
+                  <label for="ingredients" class="">Ingredients <span>*</span></label>
+                  <textarea class="" id="ingredients" name="ingredients" rows="2"
+                    placeholder="Enter ingredients"><%= menuItem.ingredients %></textarea>
+                </div>
+              </div>
+
+              <!-- Image Upload -->
+            <div class="col-md-12 mb-4">
+              <!-- Image Upload Section -->
+              <div class="img_upload_section mb-3">
+                <% if (menuItem.image && menuItem.image.length> 0) { %>
+                  <% menuItem.image.forEach(image=> { %>
+                    <span class="img_wrapper">
+                      <img src="<%= image %>" alt="<%= menuItem.name %>" >
+                    </span>
+                    <% }) %>
+                      <% } else { %>
+                        <p>No Image Available</p>
+                        <% } %>
+              </div>
+            
+              <!-- Image Upload Form -->
+              <div class="form-group mb-4">
+                <label for="image" class="form-label">Menu Item Image <span>*</span></label>
+                <div class="main_upload_design">
+                  <input type="file" class="" id="image" name="image" multiple>
+                  <span class="upload_icon"><i class="fa-solid fa-upload me-2"></i>Upload your images</span>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid gap-2">
+              <button type="submit" class="menu_items_btn">Update Menu Item</button>
+            </div>
+          </form>
+
+          <a href="/api/menu-items/list">Go back to Menu Items List</a>
+        </div>
+      </div>
+      <img src="/images/powrn-01.png" alt="" class="powrn_ele" />
+      <img src="/images/mix-rice.png" alt="" class="mix_rice_ele" />
+    </section>
+  </div>
+
+  <%- include("../partial/footer") %> <!-- Assuming you have a footer partial -->

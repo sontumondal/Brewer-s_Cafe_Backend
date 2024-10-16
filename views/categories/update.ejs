@@ -1,0 +1,49 @@
+<%- include("../partial/header") %>
+
+    <div class="main_dashboard_section">
+        <section class="main_menu_items_section">
+            <div class="main_wrapper_form">
+                <div class="container">
+                    <h2>Update Category</h2>
+                    <form action="/api/categories/update/<%= category._id %>" method="POST"
+                        enctype="multipart/form-data">
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="name" class="">Category Name <span>*</span></label>
+                                    <input type="text" id="name" name="name" value="<%= category.name %>" required
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label for="image" class="">Upload New Image (optional):</label>
+                                    <input type="file" id="image" name="image" class="form-control">
+                                    <% if (category.image) { %>
+                                        <img src="<%= category.image %>" alt="<%= category.name %>"
+                                            style="width:100px;height:auto;" class="mt-2">
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group mb-4">
+                                    <label for="description" class="">Description:</label>
+                                    <textarea name="description" id="description" class="form-control"
+                                        rows="3"><%= category.description %></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Submit Button -->
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="submit">Update Category</button>
+                        </div>
+                    </form>
+                    <a href="/api/categories/list">Back to Categories List</a>
+                </div>
+            </div>
+            <img src="/images/powrn-01.png" alt="" class="powrn_ele" />
+            <img src="/images/mix-rice.png" alt="" class="mix_rice_ele" />
+        </section>
+    </div>
+
+    <%- include("../partial/footer") %>

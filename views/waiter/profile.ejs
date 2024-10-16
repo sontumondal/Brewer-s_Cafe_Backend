@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Order Summary</h1>
+    <ul>
+        <% cartItems.forEach(item => { %>
+            <li>
+                <%= item.name %> - $<%= item.price.toFixed(2) %> x <%= item.quantity %> = $<%= (item.price * item.quantity).toFixed(2) %>
+            </li>
+        <% }) %>
+    </ul>
+    <h3>Total Price: $<%= totalPrice.toFixed(2) %></h3>
+    <form action="/waiter/order/confirm" method="POST">
+        <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
+        <button type="submit">Confirm Order</button>
+    </form>
+    <a href="/waiter/menu">Back to Menu</a>
+</body>
+</html>

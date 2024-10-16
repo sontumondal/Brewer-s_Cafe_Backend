@@ -1,0 +1,126 @@
+input:not(input[type=checkbox],input[type=file],input[type=radio]),select{
+    width: 100%;
+    height: 42px;
+    background-color: transparent;
+    border: 1px solid #d7d6d6;
+    padding: 0 15px;
+    border-radius: 12px;
+    color: #000;
+}
+label{
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 6px;
+    display: block;
+}
+label span{
+    color: red;
+}
+textarea{
+    width: 100%;
+    height: 80px;
+    background-color: transparent;
+    border: 1px solid #d7d6d6;
+    padding: 15px;
+    resize: none;
+    border-radius: 12px;
+    color: #000;
+}
+.main_upload_design{
+    width: 100%;
+    height: 42px;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #6e6e6e;
+    padding: 0 15px;
+    border-radius: 12px;
+}
+.main_upload_design input[type=file]{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+.upload_icon{
+    display: inline-block;
+    vertical-align: bottom;
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #616161;
+}
+.img_upload_section{
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 14px;
+    border-radius: 12px;
+    flex-wrap: wrap;
+    border: 1px solid #d7d6d6;
+}
+.img_upload_section .img_wrapper{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    border: 1px solid #838383;
+    border-radius: 12px;
+}
+.img_upload_section .img_wrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 6px;
+}
+.menu_items_btn{
+    background-color: green;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 12px;
+}
+.main_menu_items_section{
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.main_menu_items_section::-webkit-scrollbar{
+    display: none;
+}
+.powrn_ele {
+    position: absolute;
+    max-width: 400px;
+    right: 0;
+    top: 60%;
+    transform: translateY(-50%);
+}
+.mix_rice_ele {
+    position: absolute;
+    left: 0px;
+    bottom: -40px;
+    max-width: 250px;
+    transform: rotate(170deg);
+}
+.main_menu_items_section .main_wrapper_form{
+    position: relative;
+    z-index: 1;
+    margin: 40px auto;
+    background-color: #ffffff91;
+    border: 1px solid #e1e1e1;
+    padding: 20px;
+    border-radius: 18px;
+    max-width: 650px;
+    width: 95%;
+    /* margin: auto; */
+    backdrop-filter: blur(2px);
+    box-shadow: 0 10px 20px #b1b1b1c7;
+}

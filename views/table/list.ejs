@@ -1,0 +1,29 @@
+<%- include("../partial/header") %> <!-- Assuming you have a header partial -->
+  <div class="container">
+    <h2 class="mt-4">Tables List</h2>
+    <div class="row">
+      <% tables.forEach((table, index)=> { %>
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Table Number: <%= table.tableNumber %>
+              </h5>
+              <h6 class="card-subtitle mb-2 text-muted">Seat Count: <%= table.seatCount %>
+              </h6>
+              <p class="card-text">Status: <%= table.status %>
+              </p>
+              <div class="d-flex justify-content-between">
+                <a href="/api/table/edit/<%= table._id %>" class="btn btn-warning">Edit</a>
+                <a href="/api/table/delete/<%= table._id %>" class="btn btn-danger">
+                  <%= table.status==='deleted' ? '' : 'Delete' %>
+                </a>
+                <a href="/api/table" class="btn btn-primary">Add</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+    </div>
+  </div>
+
+  <%- include("../partial/footer") %> <!-- Assuming you have a footer partial -->

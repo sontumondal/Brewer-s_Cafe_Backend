@@ -1,0 +1,255 @@
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+        font-family: "Raleway", sans-serif;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+
+    :root {
+        --inputWidth: 370px;
+    }
+
+    .main_cook_form input {
+        width: 100%;
+        height: 35px;
+        border-radius: 30px;
+        border: 1px solid #000;
+        padding: 0 15px;
+    }
+
+    .main_cook_form input::placeholder {
+        font-size: 14px;
+        color: #535353;
+    }
+
+    .main_cook_form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 25px;
+        position: relative;
+    }
+
+    .main_login_fom {
+        max-width: var(--inputWidth);
+        width: 100%;
+        /* padding-top: 16vh; */
+    }
+
+    .main_cook_form .main_wrapper {
+        position: relative;
+        z-index: 2;
+        /* max-width: var(--inputWidth); */
+        width: 100%;
+    }
+
+    .top_img {
+        position: absolute;
+        max-width: 340px;
+        left: 0;
+        top: 0;
+    }
+
+    .right_img {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        max-width: 340px;
+    }
+
+    .main_logo {
+        /* position: absolute; */
+        top: 35%;
+        right: 10vw;
+        /* transform: translateY(-50%); */
+        max-width: 175px;
+    }
+
+    .submit_btn {
+        background-color: #000;
+        color: #fff;
+        padding: 7px 30px;
+        text-transform: capitalize;
+        font-size: 16px;
+        display: inline-block;
+        max-width: 150px;
+        border: 1px solid #000;
+        transition: 0.3s;
+        border-radius: 50px;
+    }
+
+    .submit_btn:hover {
+        background-color: transparent;
+        color: #000;
+    }
+
+    p {
+        font-size: 14px;
+        padding-left: 1vw;
+    }
+
+    @media screen and (max-width: 1024px) {
+
+        /* .main_cook_form {
+        align-items: end;
+    } */
+        .main_cook_form .main_wrapper {
+            padding-bottom: 17vh;
+        }
+
+        p {
+            font-size: 14px;
+            padding-left: 2vw;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .top_img {
+            max-width: 394px;
+        }
+
+        .main_cook_form {
+            align-items: end;
+            justify-content: start;
+        }
+
+        .main_cook_form .main_wrapper {
+            padding-bottom: 17vh;
+        }
+    }
+
+    @media screen and (max-width: 585px) {
+        .top_img {
+            max-width: 220px;
+        }
+
+        .right_img {
+            max-width: 190px;
+        }
+
+        .main_logo {
+            top: 28%;
+            max-width: 110px;
+        }
+
+        .main_cook_form {
+            align-items: end;
+            justify-content: start;
+        }
+
+        .main_cook_form .main_wrapper {
+            padding-bottom: 20vh;
+        }
+
+        .main_login_fom {
+            max-width: 270px;
+        }
+    }
+
+    .waiter_login_elements {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+    }
+
+    .main_logo_2 {
+        max-width: 140px;
+    }
+
+    .bottom_img {
+        max-width: 313px;
+    }
+
+    .main_cook_form.waiter {
+        align-items: start;
+        justify-content: center;
+        /* max-width: 480px; */
+        flex-direction: column;
+        width: 100%;
+        overflow: hidden;
+        margin: auto;
+        /* border: 1px solid #c9c9c9; */
+        padding-top: 10vh;
+        /* background-image: url('/images/login-bg-02.jpg'); */
+        /* background-color: #e3e0e0; */
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: cover;
+        padding-top: 22px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .main_cook_form.waiter .main_wrapper {
+        background-color: #f3f3f385;
+        backdrop-filter: blur(5px);
+        border-radius: 22px;
+        max-width: 410px;
+        margin-left: 30px;
+        padding: 20px;
+        /* margin: auto; */
+        margin-top: 50px;
+        border: 1px solid #e1e1e1;
+    }
+
+    .waiter_png_main {
+        float: right;
+        object-fit: contain;
+        object-position: right center;
+        /* max-height: 55vh; */
+        width: 57%;
+    }
+
+    .bottom_img_wrapper {
+        position: relative;
+        width: 100%;
+        /* display: flex;
+    align-items: end; */
+        max-height: 59vh;
+    }
+
+    .bottom_img_wrapper::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    @media screen and (max-width: 1023px) {
+        /* .waiter_png_main{
+        object-position: bottom;
+    } */
+    }
+
+    /* .main_cook_form.waiter {
+        padding-top: 10vh;
+    } */
+
+    .main_cook_form.waiter .main_logo {
+        top: auto;
+        bottom: 92px;
+        left: 20px;
+        z-index: 3;
+        position: absolute;
+        max-width: 145px;
+    }
+
+    @media screen and (max-width: 1023px) {
+        /* .waiter_png_main {
+            width: 78%;
+        } */
+    }
+
+    @media screen and (max-width: 600px) {
+        .main_cook_form.waiter .main_logo {
+            top: 34%;
+        }
+                .main_cook_form.waiter .main_wrapper {
+                    width: 95%;
+                    margin-left: 0;
+                    margin: auto;
+                }
+    }

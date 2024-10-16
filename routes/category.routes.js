@@ -1,9 +1,25 @@
-const router=require("express").Router()
-const CategoryController=require("../controllers/category.controller")
-const upload=require("../middlewares/upload")
-router.get("/",CategoryController.list)
-router.post("/add", upload.single("image"), CategoryController.add);
-router.put("/update/:id", upload.single("image"), CategoryController.update);
-router.delete("/delete/:id", CategoryController.delete)
 
-module.exports=router;
+const router = require("express").Router();
+const authController=require("../controllers/admin.controller")
+const CategoryController = require("../controllers/category.controller");
+const uploadsingle = require("../middlewares/uploadsingle");
+
+// Route to render the add category form
+router.get("/", authController.protect, CategoryController.addForm);
+router.get("/list",CategoryController.list)
+    
+// Route to render the update category form
+router.get("/edit/:id", CategoryController.edit);
+
+// Route to handle adding a new category
+router.post("/add", uploadsingle.single("image"), CategoryController.add);
+
+// Route to handle updating an existing category
+router.post("/update/:id", uploadsingle.single("image"), CategoryController.update);
+
+// Route to handle deleting a category
+router.get("/delete/:id", CategoryController.delete);
+
+// Route to get menu items by category
+router.get("/:id",CategoryController.getMenuItemsByCategory)
+module.exports = router;

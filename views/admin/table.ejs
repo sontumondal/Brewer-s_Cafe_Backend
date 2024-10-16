@@ -1,0 +1,18 @@
+<!-- admin/tables.ejs -->
+ <%- include("../partial/header") %>
+<div class="container">
+<h2>Available Tables</h2>
+<table>
+  <tr>
+    <th>Table Number</th>
+    <th>Status</th>
+  </tr>
+  <% tables.forEach(table => { %>
+    <tr>
+      <td><%= table.tableNumber %></td>
+      <td><%= table.status  %></td>
+    </tr>
+  <% }) %>
+</table>
+</div>
+<%- include("../partial/footer") %>

@@ -1,0 +1,51 @@
+<%- include("../partial/cook/header") %>
+    <div class="main_table_input"></div>
+    <div class="container-fluid">
+        <div class="main_table_list">
+            <ul>
+                <% table.map((table)=>{ %>
+                    
+<% console.log("adkfjakdnfds",table) %>
+
+                        <li <%=table._id %>>
+                            <img src="/images/table-01.png" alt="">
+
+
+<% if (table.status==="available" ) { %>
+    <span class="delivery_update_table available">
+        av
+    </span>
+    <% } else if (table.status==="new" ) { %>
+        <span class="delivery_update_table "><i class="fa-solid fa-check"></i>New Customer</span>
+
+
+        <% } else if (table.status==="wait" ) { %>
+            <span class="delivery_update_table wait">
+                Wait
+            </span>
+            <% }else if (table.status==="served" ) { %>
+                <span class="delivery_update_table served">Served</span>
+
+                <% }else if (table.status==="delivered" ) { %>
+                    <span class="delivery_update_table delivered">Delivered</span>
+                    <% } %>
+
+
+
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        <% }) %>
+            </ul>
+        </div>
+    </div>
+    </div>
+    <%- include("../partial/cook/footer") %>

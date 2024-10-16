@@ -1,0 +1,86 @@
+<%- include("../partial/header") %> <!-- Assuming you have a header partial -->
+<div class="main_dashboard_section">
+  <section class="main_menu_items_section">
+    <div class="main_wrapper_form">
+      <div class="container">
+        <h2>Add New Menu Item</h2>
+        <form action="/api/menu-items/add" method="POST" enctype="multipart/form-data">
+          <!-- Name -->
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="form-group mb-2">
+                <label for="name" class="">Menu Item Name <span>*</span></label>
+                <input type="text" class="" id="name" name="name" placeholder="Enter menu item name" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <!-- Price -->
+              <div class="form-group mb-4">
+                <label for="price" class="">Price <span>*</span></label>
+                <input type="number" class="" id="price" name="price" placeholder="Enter price" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <!-- Discount -->
+              <div class="form-group mb-4">
+                <label for="discount" class="">Discount (optional) <span>*</span></label>
+                <input type="number" class="" id="discount" name="discount" placeholder="Enter discount (optional)">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <!-- Category -->
+              <div class="form-group mb-4">
+                <label for="category" class="">Category <span>*</span></label>
+                <select class="" id="categoryId" name="categoryId" required>
+                  <option value="" disabled selected>Select a category</option>
+                  <% categories.forEach(function(category) { %>
+                    <option value="<%= category._id %>">
+                      <%= category.name %>
+                    </option>
+                    <% }); %>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <!-- Description -->
+              <div class="form-group mb-4">
+                <label for="description" class="">Description <span>*</span></label>
+                <textarea class="" id="description" name="description" rows="3" placeholder="Enter a description"></textarea>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <!-- Ingredients -->
+              <div class="form-group mb-4">
+                <label for="ingredients" class="">Ingredients <span>*</span></label>
+                <textarea class="" id="ingredients" name="ingredients" rows="2" placeholder="Enter ingredients"></textarea>
+              </div>
+            </div>
+            <div class="col-md-12 mb-4">
+              <!-- <div class="img_upload_section mb-3">
+                <span class="img_wrapper"><img src="/images/burger-img-01.png" alt=""></span><span class="img_wrapper"><img
+                    src="/images/burger-img-01.png" alt=""></span><span class="img_wrapper"><img
+                    src="/images/burger-img-01.png" alt=""></span>
+              </div> -->
+              <div class="form-group">
+                <label for="image" class="form-label">Menu Item Image <span>*</span></label>
+                <div class="main_upload_design">
+                  <!-- Image Upload -->
+                  <input type="file" class="" id="image" name="image" multiple>
+                  <span class="upload_icon"><i class="fa-solid fa-upload me-2"></i>Upload your images</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Submit Button -->
+          <div class="d-grid gap-2">
+            <button type="submit" class="menu_items_btn">Add Menu Item</button>
+          </div>
+        </form>
+        <a href="/api/menu-items/list">Go to MenuItems List</a>
+      </div>
+    </div>
+    <img src="/images/powrn-01.png" alt="" class="powrn_ele" />
+    <img src="/images/mix-rice.png" alt="" class="mix_rice_ele" />
+  </section>
+</div>
+  <%- include("../partial/footer") %> <!-- Assuming you have a footer partial -->

@@ -1,0 +1,9 @@
+<!-- This would be a part of your main layout, not a separate file -->
+<div id="bookingModal" style="display: none;">
+    <h2>Book Table: <%= table.tableNumber %></h2>
+    <form action="/waiter/tables/book" method="POST">
+        <input type="hidden" name="tableId" value="<%= table._id %>">
+        <button type="submit">Confirm Booking</button>
+    </form>
+    <button onclick="document.getElementById('bookingModal').style.display='none'">Close</button>
+</div>

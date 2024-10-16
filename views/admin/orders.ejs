@@ -1,0 +1,36 @@
+<!-- admin/orders.ejs -->
+<h2>Order List</h2>
+<table>
+  <tr>
+    <th>Order ID</th>
+    <th>Table Number</th>
+    <th>Menu Items</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  <% orders.forEach(order => { %>
+    <tr>
+      <td><%= order._id %></td>
+      <td><%= order.tableNumber %></td>
+      <td>
+        <ul>
+          <% order.menuItems.forEach(item => { %>
+            <li><%= item.name %> (Qty: <%= item.quantity %>)</li>
+          <% }) %>
+        </ul>
+      </td>
+      <td><%= order.status %></td>
+      <td>
+        <form action="/admin/orders/update" method="POST">
+          <input type="hidden" name="orderId" value="<%= order._id %>" />
+          <select name="status">
+            <option value="pending" <%= order.status === 'pending' ? 'selected' : '' %>>Pending</option>
+            <option value="confirmed" <%= order.status === 'confirmed' ? 'selected' : '' %>>Confirmed</option>
+            <option value="delivered" <%= order.status === 'delivered' ? 'selected' : '' %>>Delivered</option>
+          </select>
+          <button type="submit">Update</button>
+        </form>
+      </td>
+    </tr>
+  <% }) %>
+</table>

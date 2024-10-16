@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details - Order ID: <%= order._id %></title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS -->
+</head>
+<body>
+    <h1>Order Details</h1>
+    <h2>Order ID: <%= order._id %></h2>
+
+    <h3>Table Number: <%= order.table.tableNumber %></h3>
+    <h3>Status: <%= order.status %></h3>
+<h3>Total Price: $<%= order.totalPrice ? order.totalPrice.toFixed(2) : '0.00' %></h3>
+    <h3>Ordered At: <%= order.orderedAt.toLocaleString() %></h3>
+
+    <h3>Menu Items:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Menu Item</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% order.menuItems.forEach(item => { %>
+                <tr>
+                    <td><%= item.menuId.name %></td> <!-- Assuming menuId has a name property -->
+                    <td><%= item.quantity %></td>
+                    <td>$<%= item.menuId.price.toFixed(2) %></td> <!-- Assuming menuId has a price property -->
+                    <td>$<%= (item.quantity * item.menuId.price).toFixed(2) %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <h3>Payment Details:</h3>
+    <% if (order.isPaid) { %>
+        <p>Payment Status: Paid</p>
+        <p>Payment Method: <%= order.paymentDetails.method %></p> <!-- Assuming paymentDetails has a method property -->
+    <% } else { %>
+        <p>Payment Status: Not Paid</p>
+    <% } %>
+
+    <a href="/waiter/orders">Back to Orders</a>
+    <a href="/waiter/dashboard">Back to Dashboard</a>
+
+    <script>
+        // Optional: Any scripts you might want to add for further functionality
+    </script>
+</body>
+</html>

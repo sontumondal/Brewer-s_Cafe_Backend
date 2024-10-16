@@ -1,0 +1,86 @@
+<%- include("../partial/cook/header") %>
+
+<section class="main_table_items_list">
+  <div class="container-fluid">
+    <div class="heading_wrapper">
+      <h3>All Delivered Items <span class="done">(40)</span></h3>
+    </div>
+    <ul>
+      <li>
+        <div class="item_list_box">
+            <div class="row">
+                <div class="col-8">
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto
+                        error veniam dolorum necessitatibus! Distinctio, aspernatur.
+                    </p>
+                    <div class="qnt_table">
+                        <span>Qnt: 2</span>
+                        <span>Table: 2</span>
+                    </div>
+                    <div class="switch_main">
+                        <em class="">Preparing</em>
+                        <label class="switch">
+                            <input type="checkbox" />
+                            <span class="slider"></span>
+                        </label>
+                        <em class="">Done</em>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="img">
+                        <img src="/images/burger-img-01.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+      </li>
+      <li>
+        <div class="item_list_box">
+            <div class="row">
+                <div class="col-8">
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto
+                        error veniam dolorum necessitatibus! Distinctio, aspernatur.
+                    </p>
+                    <div class="qnt_table">
+                        <span>Qnt: 2</span>
+                        <span>Table: 2</span>
+                    </div>
+                    <div class="switch_main">
+                        <em class="off">Preparing</em>
+                        <label class="switch">
+                            <input type="checkbox" />
+                            <span class="slider"></span>
+                        </label>
+                        <em class="on">Done</em>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="img">
+                        <img src="/images/burger-img-01.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+
+
+
+<!-- <div class="container">
+    <h1>Welcome, <%= cook.name %>!</h1>
+    <p>Email: <%= cook.email %></p>
+    
+    <nav>
+        <ul>
+            <li><a href="/cook/orders">View Orders</a></li>
+            <li><a href="/cook/logout">Logout</a></li>
+        </ul>
+    </nav>
+</div> -->
+<%- include("../partial/cook/footer") %>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1>Orders for <%= waiter.name %></h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Table Number</th>
+                <th>Total Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% orders.forEach(order => { %>
+                <tr>
+                    <td><%= order._id %></td>
+                    <td><%= order.table.tableNumber %></td>
+                    <td>Total Price: $<%= order.totalPrice ? order.totalPrice.toFixed(2) : '0.00' %></td>
+
+                    <td><%= order.status %></td>
+                    <td>
+                        <a href="/waiter/orders/<%= order._id %>">View Details</a>
+                        <% if (order.status === 'pending') { %>
+                            <form action="/waiter/orders/confirm" method="POST" style="display:inline;">
+                                <input type="hidden" name="orderId" value="<%= order._id %>">
+                                <button type="submit">Confirm</button>
+                            </form>
+                        <% } else if (order.status === 'confirmed') { %>
+                            <form action="/waiter/orders/prepare" method="POST" style="display:inline;">
+                                <input type="hidden" name="orderId" value="<%= order._id %>">
+                                <button type="submit">Prepare</button>
+                            </form>
+                        <% } else if (order.status === 'preparing') { %>
+                            <form action="/waiter/orders/mark-ready" method="POST" style="display:inline;">
+                                <input type="hidden" name="orderId" value="<%= order._id %>">
+                                <button type="submit">Mark as Ready</button>
+                            </form>
+                        <% } else if (order.status === 'ready') { %>
+                            <form action="/waiter/orders/serve" method="POST" style="display:inline;">
+                                <input type="hidden" name="orderId" value="<%= order._id %>">
+                                <button type="submit">Mark as Delivered</button>
+                            </form>
+                        <% } else{ %>
+                           <p style="display:inline;">Order Delivered</p>
+                          <%  } %>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <% if (currentPage > 1) { %>
+            <a href="?page=<%= currentPage - 1 %>&limit=<%= limit %>">Previous</a>
+        <% } %>
+        <span>Page <%= currentPage %> of <%= totalPages %></span>
+        <% if (currentPage < totalPages) { %>
+            <a href="?page=<%= currentPage + 1 %>&limit=<%= limit %>">Next</a>
+        <% } %>
+    </div>
+
+    <a href="/waiter/book-table-order">Back to menu</a>
+
+    <script>
+        // Optional: Any scripts you might want to add for further functionality
+    </script>
+</body>
+</html>
+
+
+
+<!-- 
+<td>
+    <a href="/waiter/orders/< order._id %>">View Details</a>
+    <form action="/waiter/orders/update-status" method="POST" style="display:inline;">
+        <input type="hidden" name="orderId" value="< order._id %>">
+        <select name="newStatus">
+            <option value="pending" <order.status === 'pending' ? 'selected' : '' %>>Pending</option>
+            <option value="confirmed" < order.status === 'confirmed' ? 'selected' : '' %>>Confirmed</option>
+            <option value="preparing" < order.status === 'preparing' ? 'selected' : '' %>>Preparing</option>
+            <option value="ready" < order.status === 'ready' ? 'selected' : '' %>>Ready</option>
+            <option value="delivered" < order.status === 'delivered' ? 'selected' : '' %>>Delivered</option>
+        </select>
+        <button type="submit">Update Status</button>
+    </form>
+</td> -->

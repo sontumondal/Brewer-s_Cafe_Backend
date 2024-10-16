@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+<link rel="stylesheet" href="/css/cook-hader.css" />
+<link rel="stylesheet" href="/css/combine.nav.css" />
+<link rel="stylesheet" href="/css/waiter-menu-list.css" />
+</head>
+<body class="for_overflow_quick">
+    <nav class="main_nav">
+        <div class="container">
+            <div class="top">
+                <div class="wrapper">
+                    <ul>
+                        <li>
+                            <span class="title">total order</span>
+                            <span class="number"><%= totalOrdersCount %></span>
+                        </li>
+                        <!-- <li>
+                                <span class="title">done order</span>
+                                <span class="number">
+                                    <%= doneCount %>
+                                </span>
+                            </li> -->
+                        <li>
+                            <span class="title">preparing order</span>
+                            <span class="number">
+                                <%= preparingCount %>
+                            </span>
+                        </li>
+                        <li class="delivered">
+                            <span class="title">Delivered</span>
+                            <span class="number">
+                                <%= deliveredCount %>
+                            </span>
+                        </li>
+                        <li class="pending">
+                            <span class="title">pending</span>
+                            <span class="number">
+                                <%= pendingCount %>
+                            </span>
+                        </li>
+                    </ul>
+                    <div class="main_logo">
+                        <span><img src="/images/login-elements-03.png" alt="" /></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav_list_main">
+            <div class="first_wrapper">
+                <div class="list">
+                    <ul>
+                        <li>new order recived from table <strong style="font-size: 25px;font-weight: 400;">
+                                <%= tables[0].tableNumber %>
+                            </strong></li>
+                        <li></li>
+                        <li>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn_wrapper">
+                    <a href="/cook/orders/pending">view order</a>
+                </div>
+            </div>
+            <div class="nav_opn_list">
+                <span class="open_nav_btn"><i class="fa-solid fa-bars"></i></span>
+            </div>
+            <div class="side_nav_list">
+                <div class="heading_wrapper">
+                    <span class="titel">Kitchen Hub</span>
+                    <span class="close_btn"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+                <ul>
+                    <li>
+                        <span class="icon"><i class="fa-solid fa-utensils"></i></span>
+                        <a href="/cook/tables">Table View</a>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa-solid fa-truck-ramp-box"></i></span>
+                        <a href="/cook/orders/delivered">Order Delivered</a>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        <a href="/cook/orders/pending">Order Pending</a>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+                        <a href="/cook/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="main_table_input"></div>
+    <div class="container-fluid">
+        <div class="main_table_list">
+            <ul>
+    <% tables.map((table)=>{ %>
+        
+        <% console.log(table) %>
+                   
+
+                        <li <%=table._id %> onclick="window.location.href='/cook/table/<%= table._id %>'">
+                            <div style="position: relative;flex-shrink: 0;">
+                            <img src="/images/table-01.png" alt="">
+                            <!-- <strong>table
+                                <%= table.tableNumber %>
+                            </strong> -->
+
+
+                            <% if (table.status==="available" ) { %>
+                                <span class="delivery_update_table new">
+                                    New
+                                </span>
+                                <% } else if (table.status==="new" ) { %>
+                                    <span class="delivery_update_table "><i class="fa-solid fa-check"></i></span>
+
+
+                                    <% } else if (table.status==="wait" ) { %>
+                                        <span class="delivery_update_table wait">
+                                             Wait
+                                        </span>
+                                        <% }else if (table.status==="served" ) { %>
+                                            <span class="delivery_update_table served">Served</span>
+
+                                            <% }else if (table.status==="delivered" ) { %>
+                                                <span class="delivery_update_table delivered">Deliver</span>
+                                                <% } %>
+                                                </div>
+
+<strong class="" style="width: 100%;text-align: center;display: block;margin-top: 6px;font-size: 18px;">table
+    <%= table.tableNumber %>
+</strong>
+
+                        </li>
+
+
+
+
+
+
+                        <%}) %>
+                    </ul>
+                </div>
+            </div>
+            </div>
+    <!-- <ul>
+        <% tables.forEach(table=> { %>
+            <li>
+                <strong>Table ID:</strong>
+                <%= table._id %> -
+                    <strong>Status:</strong>
+                    <%= table.status %>
+                        <a href="/cook/table/<%= table._id %>">View Details</a>
+            </li>
+            <% }); %>
+    </ul> -->
+
+    <script>
+         const mainNav = document.querySelector('.main_nav')
+            const openBtn = document.querySelector('.main_nav .open_nav_btn')
+            const closeBtn = document.querySelector('.main_nav .close_btn')
+
+            openBtn.addEventListener('click', () => {
+                mainNav.classList.add('active')
+            })
+
+            closeBtn.addEventListener('click', () => {
+                mainNav.classList.remove('active')
+            })
+
+    </script>
+</body>
+</html>

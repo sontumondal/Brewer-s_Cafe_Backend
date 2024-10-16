@@ -1,0 +1,45 @@
+<%- include("../partial/header") %>
+
+    <div class="main_dashboard_section">
+        <section class="main_menu_items_section">
+            <div class="main_wrapper_form">
+                <div class="container">
+                    <h2>Add New Category</h2>
+                    <form action="/api/categories/add" method="POST" enctype="multipart/form-data">
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="name" class="">Category Name <span>*</span></label>
+                                    <input type="text" class="" id="name" name="name" placeholder="Enter category name"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label for="image" class="">Upload Image <span>*</span> (only jpeg, jpg, png, gif,
+                                        jfif, webp are allowed)</label>
+                                    <input type="file" class="" id="image" name="image" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group mb-4">
+                                    <label for="description" class="">Description:</label>
+                                    <textarea name="description" id="description" class="form-control"
+                                        placeholder="Category Description" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Submit Button -->
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="menu_items_btn">Add Category</button>
+                        </div>
+                    </form>
+                    <a href="/api/categories/list">Go to Categories List</a>
+                </div>
+            </div>
+            <img src="/images/powrn-01.png" alt="" class="powrn_ele" />
+            <img src="/images/mix-rice.png" alt="" class="mix_rice_ele" />
+        </section>
+    </div>
+
+    <%- include("../partial/footer") %>

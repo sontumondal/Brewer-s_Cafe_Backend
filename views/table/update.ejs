@@ -1,0 +1,53 @@
+<%- include("../partial/header") %> <!-- Assuming you have a header partial -->
+  <div class="main_dashboard_section">
+    <section class="main_menu_items_section">
+      <div class="main_wrapper_form">
+        <div class="container">
+          <h2>Update Table</h2>
+          <form action="/api/table/update/<%= table._id %>" method="POST">
+            <div class="row mt-4">
+              <div class="col-md-6">
+                <!-- Table Number -->
+                <div class="form-group mb-4">
+                  <label for="tableNumber" class="">Table Number <span>*</span></label>
+                  <input type="number" class="form-control" id="tableNumber" name="tableNumber"
+                    value="<%= table.tableNumber %>" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <!-- Seat Count -->
+                <div class="form-group mb-4">
+                  <label for="seatCount" class="">Seat Count <span>*</span></label>
+                  <input type="number" class="form-control" id="seatCount" name="seatCount"
+                    value="<%= table.seatCount %>" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <!-- Status -->
+                <div class="form-group mb-4">
+                  <label for="status" class="">Status <span>*</span></label>
+                  <select class="form-control" id="status" name="status" required>
+                    <option value="available" <%=table.status==='available' ? 'selected' : '' %>>Available</option>
+                    <option value="new" <%=table.status==='new' ? 'selected' : '' %>>New</option>
+                    <option value="wait" <%=table.status==='wait' ? 'selected' : '' %>>Wait</option>
+                    <option value="served" <%=table.status==='served' ? 'selected' : '' %>>Served</option>
+                    <option value="delivered" <%=table.status==='delivered' ? 'selected' : '' %>>Delivered</option>
+                    <option value="deleted" <%=table.status==='deleted' ? 'selected' : '' %>>Deleted</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="d-grid gap-2 mt-4">
+              <button type="submit" class="btn btn-primary">Update Table</button>
+            </div>
+          </form>
+          <a href="/api/table/list" class="mt-2">Go to Table List</a>
+        </div>
+      </div>
+      <img src="/images/powrn-01.png" alt="" class="powrn_ele" />
+      <img src="/images/mix-rice.png" alt="" class="mix_rice_ele" />
+    </section>
+  </div>
+
+  <%- include("../partial/footer") %> <!-- Assuming you have a footer partial -->

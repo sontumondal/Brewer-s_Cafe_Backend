@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Raleway", sans-serif;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        .heading a {
+            color: #000;
+            transition: 0.3s;
+        }
+
+        .heading a:hover {
+            color: green;
+        }
+
+        .checkout_main {
+            margin-top: 30px;
+        }
+
+        .check_out_box .checkout_img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .check_out_box .checkout_img figure {
+            height: 150px;
+            margin: 0;
+        }
+
+        .main_checkout_list_main ul {
+            margin-top: 30px;
+        }
+
+        .main_checkout_list_main ul li {
+            border: 1px solid #e1dede;
+            padding: 20px 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 25px #b6b6b66b, inset 0 5px 10px 1px #b6b6b63d;
+            margin-bottom: 30px;
+        }
+
+        .main_checkout_list_main ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        .check_out_box h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1;
+        }
+
+        .check_out_box .row {
+            align-items: center;
+        }
+
+        .check_out_box p {
+            color: #b6b6b6;
+            font-weight: 600;
+        }
+
+        .check_out_box .add {
+            color: #000;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .check_out_box .add em {
+            color: #fc3b5a;
+            font-weight: 600;
+            font-style: normal;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .check_out_box select {
+            background-color: #fff;
+            border: 1px solid #bbbbbb;
+            width: 120px;
+            height: 30px;
+            font-weight: 500;
+            color: #000
+        }
+
+        .check_out_box .qty_sekect_box {
+            position: relative;
+            display: inline-block;
+        }
+
+        .check_out_box .qty_sekect_box .line {
+            width: 1px;
+            height: 20px;
+            background-color: #bbbbbb;
+            position: absolute;
+            right: 35px;
+            top: 4px;
+        }
+
+        .check_out_box .dropdown_list {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .bottom_select {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .bottom_select span {
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            background-color: #939393;
+            border-radius: 100%;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #fff;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .bottom_select span:hover {
+            background-color: green;
+        }
+
+        .promocode_main input {
+            width: 100%;
+            height: 45px;
+            border: 1px solid #b6b6b6;
+            padding: 0 15px;
+            border-radius: 12px;
+        }
+
+        .promocode_main button {
+            width: 100%;
+            background-color: #fc3b5a;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 8px;
+            border: 0;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .promocode_main .row {
+            margin: 20px 0;
+            border-bottom: 1px solid #b6b6b6;
+            padding-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        .promocode_main button:hover {
+            background-color: green;
+        }
+
+        .total_table span {
+            display: block;
+            font-size: 18px;
+            font-weight: 500;
+            color: #000;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .total_table span.total {
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .total_table .col-6 .right {
+            float: right;
+        }
+
+        .total_table .row {
+            border-bottom: 1px solid #b6b6b6;
+            margin-bottom: 30px;
+        }
+
+        .select_table select {
+            width: 100%;
+            height: 45px;
+            border-radius: 12px;
+            background-color: #e7e6e6;
+            padding: 0 15px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .total_submit {
+            background-color: green;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+            width: 100%;
+            padding: 10px;
+            border: 0;
+            border-radius: 50px;
+            transition: 0.3s;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .total_submit:hover {
+            background-color: #fc3b5a;
+        }
+
+        /* @media screen and (max-width: 764px) {
+            .check_out_box {
+                text-align: center;
+            }
+
+            .check_out_box .dropdown_list {
+                justify-content: center;
+            }
+
+            .bottom_select {
+                justify-content: center;
+            }
+        } */
+    </style>
+
+</head>
+
+<body>
+    <section class="checkout_main">
+        <div class="container-fluid">
+            <h2 class="heading"><a href="#" onclick="window.history.back()"><i class="fa-solid fa-arrow-left"></i></a> Checkout</h2>
+            <div class="main_checkout_list_main">
+                <ul>
+                    <% cartItems.forEach(item=> { %>
+                        <li>
+                            <div class="check_out_box">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <h3>
+                                            <%= item.name %>
+                                        </h3>
+                                        <p>yahoo comida</p>
+                                        <div class="dropdown_list">
+                                            <span class="add">AED <%= item.price.toFixed(2) %> <em>
+                                                        <%= item.discount %>% off
+                                                    </em></span>
+                                            <div class="qty_sekect_box">
+                                                <span class="line"></span>
+                                                <select name="" id="">
+                                                    <option value="">Qty: <%= item.quantity %>
+                                                    </option>
+                                                    <!-- <option value="">Qty: 2</option>
+                                                <option value="">Qty: 3</option> -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="bottom_select">
+                                            <span><i class="fa fa-bookmark"></i></span>
+                                            <span><i class="fa-solid fa-trash"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="checkout_img">
+                                            <figure>
+                                                <img src="<%= item.image[0] %>" alt="menuitem image">
+                                              
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <% }) %>
+                </ul>
+                <div class="promocode_main">
+                    <form id="" name="">
+                        <div class="row g-3">
+                            <div class="col-md-7">
+                                <div class="form_group">
+                                    <input type="text" name="" placeholder="Enter your promo code">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form_group">
+                                    <button type="submit">Apply Code</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="total_table">
+                    <div class="row mx-1">
+                        <div class="col-6">
+                            <div class="left">
+                                <span>Sub total</span>
+                                <span>VAT (5%)</span>
+                                <span class="total">Total Price</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="right">
+                                <span>ADE <%= totalPrice.toFixed(2) %></span>
+                                <span>ADE 0.00</span>
+                                <span class="total">ADE <%= totalPrice.toFixed(2) %></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="select_table">
+                   
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <select name="" id="">
+                                    <option value="" selected>Select Table</option>
+                                    <option value="">Table 1</option>
+                                    <option value="">Table 2</option>
+                                    <option value="">Table 3</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <form action="/waiter/order/confirm" method="POST">
+                                    <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
+                                    <button type="submit" class="total_submit">Confirm Order</button>
+                                </form>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+
+
+
+
+
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <h1>Order Summary</h1>
+    <ul>
+        <% cartItems.forEach(item=> { %>
+            
+                <li>
+                    <%= item.name %> - $<%= item.price.toFixed(2) %> x <%= item.quantity %> = $<%= (item.price *
+                                    item.quantity).toFixed(2) %>
+                </li>
+                <% }) %>
+    </ul>
+    <h3>Total Price: $<%= totalPrice.toFixed(2) %>
+    </h3>
+    <form action="/waiter/order/confirm" method="POST">
+        <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
+        <button type="submit">Confirm Order</button>
+    </form>
+    <a href="/waiter/menu">Back to Menu</a>
+
+
+
+</body>
+
+</html> -->

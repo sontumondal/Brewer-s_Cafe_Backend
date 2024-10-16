@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/waiter-menu-list.css" />
+    <title>Brewer's Cafe <%= title %>
+    </title>
+
+    <style>
+        body {
+            font-family: "Raleway", sans-serif;
+        }
+
+        #loading {
+            display: none;
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="top_menulist_main">
+        <div class="heding_wrapper">
+            <div class="wrapper">
+                <a href="/waiter/tables" class="left"><i class="fa-solid fa-arrow-left"></i></a>
+                <h1>Menu Items</h1>
+            </div>
+            <a href="/waiter/order-summary" class="cartItems"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+        <form method="GET" action="/waiter/menu">
+            <input type="text" name="q" placeholder="Search menu items or category..." value="<%= searchQuery %>">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+<% if(menuItems.length === 0){ %>
+    <div class="notFound">
+        <img src="/images/notfound.jfif" alt="">
+
+    </div>
+    <% } %>
+    <div class="main_waiter_list_section">
+        <ul class="main_iems_list" id="menu-items-list">
+            <% menuItems.forEach(item=> { %>
+              
+                <li>
+                    <div class="bestseler_wrapper">
+                        <span class="bestseler">bestseler</span>
+                        <span class="Wishlist"><i class="fa-solid fa-heart"></i></span>
+                    </div>
+                    <figure>
+                        <img src="<%= item.image[0] %>" alt="">
+                    </figure>
+                    <a class="item_list" href="/waiter/menu/<%= item._id %>">
+                        <%= item.name %>
+                    </a>
+                    <p class="para">yahoo comida</p>
+                    <div class="offer_main">
+                        <span>AED25 <em>40% off</em></span>
+                        <a href="/waiter/menu/<%= item._id %>">add</a>
+                    </div>
+                    <span class="corner_css"></span>
+                </li>
+                <% }) %>
+        </ul>
+        <div id="loading">
+            <p>Loading more items...</p>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 1; // Start from the first page
+        const totalPages = <%= totalPages %>;
+        const searchQuery = "<%= searchQuery %>";
+        const limit = <%= limit %>;
+        const menuItemsList = document.getElementById('menu-items-list');
+        const loading = document.getElementById('loading');
+
+        const loadMoreItems = async () => {
+            if (currentPage < totalPages) {
+                loading.style.display = 'block';
+
+                const response = await fetch(`/waiter/menu?q=${encodeURIComponent(searchQuery)}&skip=${currentPage * limit}&limit=${limit}`, {
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                });
+
+                if (!response.ok) {
+                    loading.style.display = 'none'; // Hide loading if there's an error
+                    return;
+                }
+
+                const data = await response.text();
+
+                // Append new menu items to the list
+                menuItemsList.insertAdjacentHTML('beforeend', data);
+
+                // Increment the current page
+                currentPage++;
+                loading.style.display = 'none';
+            } else {
+                // Optionally, you can hide the loading spinner if no more pages
+                loading.style.display = 'none';
+            }
+        };
+
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight * 1.0) {
+                loadMoreItems();
+            }
+        });
+    </script>
+</body>
+
+</html>

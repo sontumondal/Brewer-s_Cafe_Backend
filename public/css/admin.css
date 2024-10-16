@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+body{
+    font-family: "Raleway", sans-serif;
+}
+.main_admin_form{
+    /* max-width: 470px; */
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    padding: 30px;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main_logo{
+    max-width: 120px;
+    margin-top: -80px;
+    margin-bottom: 25px;
+}
+.main_admin_wrapper{
+    background-color: #ffffff61;
+    padding: 30px;
+    backdrop-filter: blur(3px);
+    border-radius: 22px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #cdcd;
+    box-shadow: 0 10px 20px #cdcdcd96;
+}
+p{
+    color: #000;
+}
+.main_admin_form{
+    position: relative;
+    overflow: hidden;
+}
+.powrn_ele{
+    position: absolute;
+    max-width: 400px;
+    right: 0;
+    top: 60%;
+    transform: translateY(-50%);
+}
+.mix_rice_ele{
+    position: absolute;
+    left: -50px;
+    bottom: -40px;
+    max-width: 250px;
+    transform: rotate(170deg);
+}
+.main_admin_form input{
+    width: 100%;
+    height: 35px;
+    border: 1px solid #000;
+    border-radius: 30px;
+    padding: 0 15px;
+}
+button{
+    width: 100%;
+    background-color: #000;
+    border: 1px solid #000;
+    border-radius: 50px;
+    padding: 7px 30px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.3s;
+}
+button:hover{
+    color: #fff;
+    background-color: green;
+    border-color: green;
+}
+.admin_register input{
+    width: 100%;
+    height: 50px;
+    border: 1px solid #000;
+}
+
+.main_admin_form.new input{
+    border-color: #000;
+}
+.main_admin_form.new h1{
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.main_admin_form.new{
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+.main_admin_form.new .wrapper{
+    max-width: 470px;
+    width: 100%;
+    margin: auto;
+    border: 1px solid #cccccc;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px #cecece;
+    position: relative;
+    z-index: 3;
+    background-color: #ffffff7a;
+    backdrop-filter: blur(3px);
+}
+.main_admin_form.new label{
+    font-weight: 600;
+    font-size: 15px;
+}
+.main_admin_form.new input{
+    color: #000;
+}
+.main_admin_form.new button{
+    background-color: #000;
+    border-radius: 30px;
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+    transition: 0.3s;
+}
+.main_admin_form.new button:hover{
+    background-color: green;
+    border-color: green;
+}
+.main_admin_form.new .heading_wrapper{
+    text-align: center;
+}
+.main_admin_form.new .main_logo{
+    margin-bottom: 10px;
+}
+.main_admin_form.new p{
+    color: #000;
+}
+.main_admin_login_body{
+    width: 100%;
+    overflow: hidden;
+}
+.admin_login_p{
+    position: relative;
+    z-index: 3;
+}

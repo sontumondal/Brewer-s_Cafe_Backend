@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Table</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Book a Table</h1>
+    
+    <form action="/waiter/select-menu" method="GET">
+        <div>
+            <label for="tableNumber">Table Number:</label>
+            <input type="text" name="tableNumber" required>
+        </div>
+        <div>
+            <label for="seatCount">Seat Count:</label>
+            <input type="number" name="seatCount" required min="1">
+        </div>
+
+        <button type="submit">Next: Select Menu</button>
+    </form>
+
+    <a href="/waiter/dashboard">Back to Dashboard</a>
+</body>
+</html>

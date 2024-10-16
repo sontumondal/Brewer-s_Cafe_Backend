@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .main_banner_order {
+            width: 100%;
+            height: 40vh;
+        }
+
+        .main_banner_order img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .top_banner {
+            position: relative;
+        }
+
+        .pervious_page {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            font-size: 20px;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .pervious_page:hover {
+            color: #fc3b5a;
+        }
+
+        .quantity {
+            display: inline-flex;
+            border-radius: 0px;
+            overflow: hidden;
+        }
+
+        .quantity button {
+            background-color: #63b333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: background-color 0.2s;
+            border-radius: 50%;
+        }
+
+        .quantity button:hover {
+            background-color: #ff2449;
+        }
+
+        .input-box {
+            width: 40px;
+            text-align: center;
+            border: none;
+            /* padding: 8px 10px; */
+            font-size: 16px;
+            outline: none;
+            font-weight: 500;
+        }
+
+        /* Hide the number input spin buttons */
+        .input-box::-webkit-inner-spin-button,
+        .input-box::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .input-box[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .bottom_dtl h1 {
+            font-size: calc(15px + 1vw);
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+
+        .bottom_dtl .add_top {
+            font-size: 20px;
+            font-weight: 400;
+            color: #ff2449;
+            margin: 10px 0;
+            display: block;
+        }
+
+        .bottom_dtl .add_top em {
+            font-size: 30px;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .bottom_dtl h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .bottom_dtl p span {
+            color: #ff2449;
+            font-weight: 500;
+        }
+
+        .quantity_wrapper_main {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .quantity_wrapper_main .heading {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .total_price .title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .total_price .ade {
+            font-size: 18px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: #ff2449;
+        }
+
+        .total_price .ade em {
+            font-size: 25px;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .total_price {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 18px 0;
+        }
+
+        .main_order_place .bottom_dtl {
+            margin: 40px 0;
+        }
+
+        .addtoorder {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            width: 100%;
+            border: 0;
+            background-color: #63b333;
+            border-radius: 50px;
+            text-transform: uppercase;
+            padding: 12px;
+            transition: 0.3s;
+        }
+
+        .addtoorder:hover {
+            background-color: green;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="main_order_place">
+        <div class="top_banner">
+            <a href="#" onclick="window.history.back()" class="pervious_page"><i class="fa-solid fa-arrow-left"></i></a>
+            <figure class="main_banner_order">
+                <img src="<%= menuItem.image[0] %>"
+                    alt="">
+            </figure>
+        </div>
+        <div class="bottom_dtl">
+            <div class="container">
+                <h1><%= menuItem.name %></h1>
+                <span class="add_top">ADE <em><%= menuItem.price.toFixed(2) %></em></span>
+                <h3>Details</h3>
+<p id="menu-description">
+    <span id="description-short" style="color: #000;">
+        <%= menuItem.description.substring(0, 100) %>...
+    </span>
+    <span id="description-full" style="display: none; color: #000; ">
+        <%= menuItem.description %>
+    </span>
+    <span id="toggle-text" style="color: blue; cursor: pointer;" onclick="toggleDescription()">Read more</span>
+</p>                <div class="quantity_wrapper_main">
+                    <span class="heading">Quantity</span>
+                <form action="/waiter/menu/add-to-cart" method="POST" id="add-to-cart-form">
+                    <input type="hidden" name="menuId" value="<%= menuItem._id %>">
+                
+                    <div class="quantity">
+                        <button type="button" class="minus" aria-label="Decrease" onclick="changeQuantity(-1)">−</button>
+                        <input type="number" class="input-box" name="quantity" value="1" min="1" max="10"
+                            onchange="handleQuantityChange(this)">
+                        <button type="button" class="plus" aria-label="Increase" onclick="changeQuantity(1)">+</button>
+                    </div>
+                
+                </div>
+                    <div class="total_price">
+                        <span class="title">Total Price</span>
+                        <span class="ade">AED <em id="total-price">
+                                <%= menuItem.price.toFixed(2) %>
+                            </em></span>
+                    </div>
+                <button type="submit" class="addtoorder">add to my Order</button>
+            </form>
+            </div>
+        </div>
+    </section>
+
+   <script>
+    const pricePerItem = <%= menuItem.price %>; // Store the price per item
+
+    function changeQuantity(change) {
+        const inputBox = document.querySelector('.input-box');
+        let quantity = parseInt(inputBox.value);
+        quantity = isNaN(quantity) ? 1 : quantity;
+
+        // Update the quantity value
+        quantity += change;
+        if (quantity < 1) quantity = 1; // Ensure value doesn't go below 1
+        if (quantity > 10) quantity = 10; // Limit maximum value to 10
+
+        inputBox.value = quantity;
+        handleQuantityChange(inputBox); // Update total price display
+    }
+
+    function handleQuantityChange(inputBox) {
+        let quantity = parseInt(inputBox.value);
+        quantity = isNaN(quantity) ? 1 : quantity;
+
+        // Calculate the total price based on quantity
+        const totalPrice = (pricePerItem * quantity).toFixed(2);
+        document.getElementById('total-price').innerText = totalPrice; // Update total price display
+
+        console.log("Quantity changed:", quantity);
+    }
+
+    function toggleDescription() {
+            const fullDescription = document.getElementById('description-full');
+            const shortDescription = document.getElementById('description-short');
+            const toggleText = document.getElementById('toggle-text');
+
+            if (fullDescription.style.display === "none") {
+                fullDescription.style.display = "inline";
+                shortDescription.style.display = "none";
+                toggleText.innerText = "Read less";
+            } else {
+                fullDescription.style.display = "none";
+                shortDescription.style.display = "inline";
+                toggleText.innerText = "Read more";
+            }
+        }
+</script>
+    <!-- <script>
+        (function () {
+            const quantityContainer = document.querySelector(".quantity");
+            const minusBtn = quantityContainer.querySelector(".minus");
+            const plusBtn = quantityContainer.querySelector(".plus");
+            const inputBox = quantityContainer.querySelector(".input-box");
+
+            updateButtonStates();
+
+            quantityContainer.addEventListener("click", handleButtonClick);
+            inputBox.addEventListener("input", handleQuantityChange);
+
+            function updateButtonStates() {
+                const value = parseInt(inputBox.value);
+                minusBtn.disabled = value <= 1;
+                plusBtn.disabled = value >= parseInt(inputBox.max);
+            }
+
+            function handleButtonClick(event) {
+                if (event.target.classList.contains("minus")) {
+                    decreaseValue();
+                } else if (event.target.classList.contains("plus")) {
+                    increaseValue();
+                }
+            }
+
+            function decreaseValue() {
+                let value = parseInt(inputBox.value);
+                value = isNaN(value) ? 1 : Math.max(value - 1, 1);
+                inputBox.value = value;
+                updateButtonStates();
+                handleQuantityChange();
+            }
+
+            function increaseValue() {
+                let value = parseInt(inputBox.value);
+                value = isNaN(value) ? 1 : Math.min(value + 1, parseInt(inputBox.max));
+                inputBox.value = value;
+                updateButtonStates();
+                handleQuantityChange();
+            }
+
+            function handleQuantityChange() {
+                let value = parseInt(inputBox.value);
+                value = isNaN(value) ? 1 : value;
+
+                // Execute your code here based on the updated quantity value
+                console.log("Quantity changed:", value);
+            }
+        })();
+    </script> -->
+
+</body>
+
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/waiter-menu-list.css">
+</head>
+
+<body>
+    <figure class="main_img">
+        <img src="https://images.unsplash.com/photo-1549611016-3a70d82b5040?q=80&w=1430&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="">
+    </figure>
+    <h1>
+        <%= menuItem.name %>
+    </h1>
+    <p>Price: $<%= menuItem.price %>
+    </p>
+    <form action="/waiter/menu/add-to-cart" method="POST">
+        <input type="hidden" name="menuId" value="<%= menuItem._id %>">
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" value="1" min="1">
+        <button type="submit">Add to Cart</button>
+    </form>
+    <a href="/waiter/menu">Back to Menu</a>
+</body>
+
+</html> -->

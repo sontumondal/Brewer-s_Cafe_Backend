@@ -1,0 +1,47 @@
+</div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <!-- Bootstrap JS -->
+   
+    <script>
+      document.querySelectorAll('.nav-item > a').forEach(menu => {
+          menu.addEventListener('click', function (event) {
+            event.preventDefault();
+            const parentItem = this.parentElement;
+
+            // Close other open dropdowns
+            document.querySelectorAll('.nav-item').forEach(item => {
+              if (item !== parentItem) {
+                item.classList.remove('active');
+              }
+            });
+
+            // Toggle active class
+            parentItem.classList.toggle('active');
+
+            // Adjust sidebar class based on active state
+            if (parentItem.classList.contains('active')) {
+              mainSlideBar.classList.remove('small_nav');
+            }
+          });
+        });
+
+        let navToggelBtn = document.querySelector('.menu_toggel');
+        let mainSlideBar = document.querySelector('.sidebar');
+        let mainSlideBarBig = document.querySelector('.main_dashboard_section ');
+
+        navToggelBtn.addEventListener('click', () => {
+          mainSlideBar.classList.toggle('small_nav');
+          mainSlideBarBig.classList.toggle('big_size');
+        });
+
+
+    </script>
+
+
+  </body>
+</html>

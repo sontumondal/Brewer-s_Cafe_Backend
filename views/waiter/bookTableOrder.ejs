@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS -->
+</head>
+<body>
+    <h1>Book a Table & Place Your Order</h1>
+    
+    <form action="/waiter/book-table-order" method="POST">
+        <div>
+            <label for="tableNumber">Table Number:</label>
+            <input type="text" name="tableNumber" required>
+        </div>
+        <div>
+            <label for="seatCount">Seat Count:</label>
+            <input type="number" name="seatCount" required min="1">
+        </div>
+        
+        <h3>Select Menu Items:</h3>
+        <% menuItems.forEach(item => { %>
+            <div>
+                <input type="checkbox" name="selectedMenuItems" value="<%= item._id %>">
+                <label><%= item.name %> - $<%= item.price %></label>
+                <input type="number" name="quantities[<%= item._id %>]" value="1" min="1" step="1"> <!-- Quantity input -->
+            </div>
+        <% }) %>
+
+        <button type="submit">Book Table & Order</button>
+    </form>
+
+    <a href="/waiter/dashboard">Back to Dashboard</a>
+
+    <script>
+        // Optional: Script to update total price dynamically (if needed)
+        function updateTotal(checkbox) {
+            // Logic to update total price can go here if desired
+        }
+    </script>
+</body>
+</html>

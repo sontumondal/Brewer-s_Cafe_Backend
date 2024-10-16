@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Menu Items</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Select Menu Items</h1>
+    
+    <form action="/waiter/add-to-cart" method="POST">
+        <% menuItems.forEach(item => { %>
+            <div>
+                <input type="checkbox" name="selectedMenuItems" value="<%= item._id %>">
+                <label><%= item.name %> - $<%= item.price %></label>
+                <input type="number" name="quantities[<%= item._id %>]" value="1" min="1" step="1">
+            </div>
+        <% }) %>
+
+        <button type="submit">Add to Cart</button>
+    </form>
+
+    <a href="/waiter/book-table">Back to Book Table</a>
+</body>
+</html>

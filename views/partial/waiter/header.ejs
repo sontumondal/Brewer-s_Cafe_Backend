@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/cook-hader.css" />
+  <!-- <link rel="stylesheet" href="/css/cook-hader.css" /> -->
+  <link rel="stylesheet" href="/css/waiter-menu-list.css" />
+  <title>Brewer's Cafe <%= title %>
+  </title>
+
+  <style>
+    body {
+      font-family: "Raleway", sans-serif;
+      ;
+    }
+
+    /* Basic styles for the modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0 0 0 / 76%);
+      backdrop-filter: blur(5px);
+      /* padding-top: 60px; */
+    }
+
+    .modal-content h2{
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+    }
+    .modal-content button{
+      max-width: calc(290px - 100px);
+      width: 100%;
+      margin: auto;
+      text-align: center;
+      border: 1px solid currentColor;
+      color:  #fff;
+      padding: 10px;
+      border-radius: 50px;
+      opacity: 80%;
+      transition: all 0.3s;
+    }
+    .modal-content button:hover{
+      opacity: 100%;
+      box-shadow: 0 6px 15px #c2c1c1;
+    }
+    .modal-content .main_form_wrapper{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .modal-content .main_form_wrapper form{
+      width: 100%;
+    }
+    .modal-content button.wait{
+      background-color: #888888;
+    }
+    .modal-content button.new{
+      background-color: red;
+    }
+    .modal-content button.served{
+      background-color: green;
+    }
+    .modal-content button.delivered{
+      background-color: transparent;
+      color: #000;
+    }
+    .modal-content {
+      text-align: center;
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 95%;
+      max-width: 290px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      right: -10px;
+      top: -8px;
+      background: #e1e1e1;
+      color: #000;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100%;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="main_nav">
+    <div class="container">
+      <div class="top">
+        <div class="wrapper">
+          <ul>
+            <li>
+              <span class="title">total order</span>
+              <span class="number">20</span>
+
+            </li>
+            <li>
+              <span class="title">Served</span>
+              <span class="number">23</span>
+            </li>
+
+            <li class="pending">
+              <span class="title">Waiting</span>
+              <span class="number">23</span>
+            </li>
+            <li class="delivered">
+              <span class="title">Delivered</span>
+              <span class="number">23</span>
+            </li>
+          </ul>
+          <div class="main_logo">
+            <span><img src="/images/login-elements-03.png" alt="" /></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav_list_main">
+      <div class="first_wrapper">
+        <div class="list">
+          <ul>
+            <li>new order</li>
+            <li>recived from</li>
+            <li>table 24</li>
+          </ul>
+        </div>
+        <div class="btn_wrapper">
+          <a href="/waiter/order-summary">view order</a>
+        </div>
+      </div>
+      <div class="nav_opn_list">
+        <span class="open_nav_btn"><i class="fa-solid fa-bars"></i></span>
+      </div>
+    </div>
+    <div class="side_nav_list">
+      <div class="heading_wrapper">
+        <span class="titel">Kitchen Hub</span>
+        <span class="close_btn"><i class="fa-solid fa-xmark"></i></span>
+      </div>
+      <ul>
+        <li>
+          <span class="icon"><i class="fa-solid fa-utensils"></i></span>
+          Table View
+        </li>
+        <li>
+          <span class="icon"><i class="fa-solid fa-truck-ramp-box"></i></span>
+          Order Delivered
+        </li>
+        <li>
+          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+          Order Pending
+        </li>
+        <li>
+          <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+          Logout
+        </li>
+      </ul>
+    </div>
+  </nav>

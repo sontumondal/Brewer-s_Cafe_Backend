@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Confirm Order</title> -->
+     <title><%= title%></title>
+</head>
+<body>
+    <h1>Confirm Order</h1>
+    <p><strong>Order ID:</strong> <%= order._id %></p>
+    <p><strong>Table Number:</strong> <%= order.table.tableNumber %></p>
+    <p><strong>Menu Items:</strong></p>
+    <ul>
+        <% order.menuItems.forEach(item => { %>
+        <li><%= item.menuId.name %> - Quantity: <%= item.quantity %></li>
+        <% }) %>
+    </ul>
+    <p><strong>Total Price:</strong> <%= order.totalPrice %></p>
+    <form action="/cook/order/confirm" method="POST">
+        <input type="hidden" name="orderId" value="<%= order._id %>">
+        <button type="submit">Confirm Order</button>
+    </form>
+</body>
+</html>

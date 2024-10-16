@@ -1,0 +1,33 @@
+<%- include("../partial/header") %> <!-- Include your header partial -->
+
+<div class="container mt-4 mb-4">
+  <h2>Search Menu Items</h2>
+
+  <!-- Search Form -->
+  <form action="/api/menu-items/search" method="GET">
+    <div class="form-group mb-4">
+      <label for="query" class="form-label">Search</label>
+      <input type="text" class="form-control" id="query" name="query" value="<%= query || '' %>" placeholder="Enter search term">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+  <!-- Search Results -->
+  <% if (menuItems && menuItems.length > 0) { %>
+    <div class="mt-4">
+      <h3>Search Results:</h3>
+      <ul class="list-group">
+        <% menuItems.forEach(function(item) { %>
+          <li class="list-group-item">
+            <a href="/api/menu-items/view/<%= item._id %>"><%= item.name %></a>
+            <span class="badge bg-primary float-end">$<%= item.price %></span>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  <% } else { %>
+    <p>No menu items found matching your search criteria.</p>
+  <% } %>
+</div>
+
+<%- include("../partial/footer") %> <!-- Include your footer partial -->

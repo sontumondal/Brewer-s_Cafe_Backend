@@ -1,0 +1,20 @@
+<% menuItems.forEach(item=> { %>
+    <li>
+        <div class="bestseler_wrapper">
+            <span class="bestseler">bestseler</span>
+            <span class="Wishlist"><i class="fa-solid fa-heart"></i></span>
+        </div>
+        <figure>
+            <img src="<%= item.image[0] %>" alt="">
+        </figure>
+        <a class="item_list" href="/waiter/menu/<%= item._id %>">
+            <%= item.name %>
+        </a>
+        <p class="para">yahoo comida</p>
+        <div class="offer_main">
+            <span>AED25 <em>40% off</em></span>
+            <a href="/waiter/menu/<%= item._id %>">add</a>
+        </div>
+        <span class="corner_css"></span>
+    </li>
+    <% }) %>

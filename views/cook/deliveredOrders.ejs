@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/cook-hader.css" />
+    <style>
+        body {
+            font-family: "Raleway", sans-serif;
+        }
+
+        /* .switch {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 200px;
+        }
+
+        .switch input {
+            display: none;
+        }
+
+        .switch label {
+            position: relative;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 20px;
+            background-color: #ccc;
+            transition: background-color 0.4s;
+            flex: 1;
+            text-align: center;
+        }
+
+        .switch input:checked+label {
+            background-color: #2196F3;
+            color: white;
+        } */
+        .inner_wrapper_list_v2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* flex-wrap: wrap; */
+            gap: 25px;
+        }
+
+        .loop_wrapper .img_wrapper {
+            height: 200px;
+            display: block;
+        }
+
+        .loop_wrapper .img_wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .loop_wrapper {
+            padding: 0 10px;
+            margin-bottom: 25px;
+        }
+
+        .main_table_items_list .loop_wrapper:last-child{
+            margin-bottom: 0;
+        }
+
+        .check_btn {
+            display: inline-flex;
+            /* gap: 15px; */
+            margin-top: 20px;
+            background-color: transparent;
+            border-radius: 50px;
+            max-width: 228px;
+            width: 100%;
+            border: 1px solid #535353;
+            font-weight: 600;
+            color: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .check_btn .form_group_check {
+            width: 50%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 10px 20px;
+        }
+
+        .check_btn .form_group_check input[type=radio] {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .check_transfer {
+            opacity: 0;
+            transition: opacity 0.3s, background-color 0.3s;
+            background-color: transparent;
+            display: inline-block;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+        }
+
+        .preparing input[type="radio"]:checked+.check_transfer {
+            opacity: 1;
+            background-color: orangered;
+        }
+
+        .done input[type="radio"]:checked+.check_transfer {
+            opacity: 1;
+            background-color: green;
+        }
+
+        input[type="radio"]:checked+.check_transfer+label {
+            color: white;
+            position: relative;
+        }
+
+        /* .check_transfer{
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background-color: #000;
+            left: 0;
+            top: 0;
+            transition: 0.3s;
+        }
+        .check_btn.left .check_transfer{
+            left: auto;
+            right: 0;
+        } */
+
+        @media screen and (max-width: 600px) {
+            .main_nav .top .wrapper {
+                flex-direction: column-reverse;
+                gap: 15px;
+            }
+
+            .loop_wrapper .img_wrapper {
+                height: 125px;
+                /* width: 100%; */
+            }
+
+            .check_btn .form_group_check {
+                padding: 5px 16px;
+            }
+
+            .check_btn {
+                max-width: 212px;
+            }
+
+            .inner_wrapper_list_v2 {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+
+</head>
+
+<body class="for_overflow_quick">
+    <!-- <h1>
+        <%= title %>
+    </h1>
+    <ul>
+        <% deliveredOrders.forEach(order=> { %>
+            <% console.log(order) %>
+            <li>
+                <strong>Order ID:</strong>
+                <%= order._id %> -
+                    <strong>Table ID:</strong>
+                    <%= order.table._id %> -
+                        <strong>Status:</strong>
+                        <%= order.status %>
+                            <a href="/cook/table/<%= order.table._id %>">View Details</a>
+            </li>
+            <% }); %>
+    </ul>
+    <a href="/cook/tables">Back to Tables</a> -->
+
+
+    <nav class="main_nav">
+        <div class="container">
+            <div class="top">
+                <div class="wrapper">
+                    <ul>
+                        <li>
+                            <span class="title">total order</span>
+                            <span class="number">
+                                <%= totalOrdersCount %>
+                            </span>
+                        </li>
+                        <!-- <li>
+                                <span class="title">done order</span>
+                                <span class="number">
+                                    <%= doneCount %>
+                                </span>
+                            </li> -->
+                        <li>
+                            <span class="title">preparing order</span>
+                            <span class="number">
+                                <%= preparingCount %>
+                            </span>
+                        </li>
+                        <li class="delivered">
+                            <span class="title">Delivered</span>
+                            <span class="number">
+                                <%= deliveredCount %>
+                            </span>
+                        </li>
+                        <li class="pending">
+                            <span class="title">pending</span>
+                            <span class="number">
+                                <%= pendingCount %>
+                            </span>
+                        </li>
+                    </ul>
+                    <div class="main_logo">
+                        <span><img src="/images/login-elements-03.png" alt="" /></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav_list_main">
+            <div class="first_wrapper">
+                <div class="list">
+                    <ul>
+                        <li>new order recived from table <strong style="font-size: 25px;font-weight: 400;">
+                                <%= tables[0].tableNumber %>
+                            </strong></li>
+                        <li></li>
+                        <li>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn_wrapper">
+                    <a href="/cook/orders/pending">view order</a>
+                </div>
+            </div>
+            <div class="nav_opn_list">
+                <span class="open_nav_btn"><i class="fa-solid fa-bars"></i></span>
+            </div>
+            <div class="side_nav_list">
+                <div class="heading_wrapper">
+                    <span class="titel">Kitchen Hub</span>
+                    <span class="close_btn"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+                <ul>
+                    <li>
+                        <span class="icon"><i class="fa-solid fa-utensils"></i></span>
+                        <a href="/cook/tables">Table View</a>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa-solid fa-truck-ramp-box"></i></span>
+                        <a href="/cook/orders/delivered">Order Delivered</a>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        <a href="/cook/orders/pending">Order Pending</a>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+                        <a href="/cook/logout">Logout</a>
+            
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="main_table_items_list">
+        <div class="container-fluid">
+            <% deliveredOrders.forEach(order=> { %>
+                <div class="loop_wrapper">
+                    <div class="heading_wrapper">
+                        <h3>Order for Table <span class="done">
+                                <%= order.table.tableNumber %>
+                            </span></h3>
+                    </div>
+                    <div class="">
+                        <ul>
+                            <li class="inner_wrapper_list_v2">
+                                <div>
+                                    <%= order.menuItems[0].menuId.name %> -
+                                        <p>
+                                            <%= order.menuItems[0].menuId.description %>
+                                        </p>
+                                        <strong>Quantity:</strong>
+                                        <%= order.menuItems[0].quantity %> -
+                                            <strong>Status:</strong>
+                                            <%= order.status %>
+                                                <form action="/cook/order/update" method="POST">
+                                                    <input type="hidden" name="orderId" value="<%= order._id %>">
+
+                                                    <div class="">
+                                                        <!-- <input type="radio" id="pending-<%= order._id %>" name="status" value="pending"
+                                                                                                            <%=order.status==='pending' ? 'checked' : '' %> onchange="this.form.submit()">
+                                                                                                        <label for="pending-<%= order._id %>">Pending</label> -->
+
+                                                        <div class="check_btn">
+                                                            <div class="form_group_check preparing">
+                                                                <input type="radio" id="preparing-<%= order._id %>"
+                                                                    name="status" value="preparing"
+                                                                    <%=order.status==='preparing' ? 'checked' : '' %>
+                                                                onchange="this.form.submit()">
+                                                                <span class="check_transfer"></span>
+                                                                <label
+                                                                    for="preparing-<%= order._id %>">Preparing</label>
+                                                            </div>
+                                                            <div class="form_group_check done">
+                                                                <input type="radio" id="done-<%= order._id %>"
+                                                                    name="status" value="done" <%=order.status==='done'
+                                                                    ? 'checked' : '' %>
+                                                                onchange="this.form.submit()">
+                                                                <span class="check_transfer"></span>
+                                                                <label for="done-<%= order._id %>">Done</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- <input type="radio" id="delivered-<%= order._id %>" name="status" value="delivered" <%=order.status==='delivered'
+                                                                                                            ? 'checked' : '' %> onchange="this.form.submit()">
+                                                                                                        <label for="delivered-<%= order._id %>">Delivered</label> -->
+                                                    </div>
+                                                </form>
+                                </div>
+                                <span class="img_wrapper"><img src="<%= order.menuItems[0].menuId.image %>"
+                                        alt="<%= order.menuItems[0].menuId.name %>" /></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+    </section>
+
+    <script>
+
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                // Remove visible class from all check_transfer elements
+                document.querySelectorAll('.check_transfer').forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.backgroundColor = 'transparent';
+                });
+
+                // Make the current one visible
+                if (this.checked) {
+                    this.nextElementSibling.style.opacity = '1';
+                    this.nextElementSibling.style.backgroundColor = 'black';
+                }
+            });
+        });
+
+        const mainNav = document.querySelector('.main_nav')
+        const openBtn = document.querySelector('.main_nav .open_nav_btn')
+        const closeBtn = document.querySelector('.main_nav .close_btn')
+
+        openBtn.addEventListener('click', () => {
+            mainNav.classList.add('active')
+        })
+
+        closeBtn.addEventListener('click', () => {
+            mainNav.classList.remove('active')
+        })
+
+    </script>
+</body>
+
+</html>

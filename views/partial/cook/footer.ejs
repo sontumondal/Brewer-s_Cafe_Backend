@@ -1,0 +1,20 @@
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+      const mainNav = document.querySelector('.main_nav')
+      const openBtn = document.querySelector('.main_nav .open_nav_btn')
+      const closeBtn = document.querySelector('.main_nav .close_btn')
+
+      openBtn.addEventListener('click',()=>{
+        mainNav.classList.add('active')
+      })
+
+      closeBtn.addEventListener('click',()=>{
+        mainNav.classList.remove('active')
+      })
+
+    </script>
+    
+  </body>
+</html>

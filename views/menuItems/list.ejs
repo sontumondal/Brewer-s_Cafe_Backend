@@ -1,0 +1,97 @@
+<%- include("../partial/header") %>
+<div class="main_dashboard_section update_delete">
+<div class="container-fluid mt-4 mb-4">
+  <h2>Search Menu Items</h2>
+
+  <!-- Search Form -->
+  <form action="/api/menu-items/search" method="GET">
+    <div class="form-group mb-4">
+      <!-- <label for="query" class="form-label">Search</label> -->
+      <input type="text" class="form-control" id="query" name="query" value="<%=  %>" placeholder="Enter search term">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+  <!-- Search Results -->
+  <div class="main_card_product_side">
+    <div class="container-fluid">
+      <div class="row">
+        <% if (menuItems && menuItems.length> 0) { %>
+          <% menuItems.forEach((item)=> { %>
+            <% console.log(item) %>
+            <div class="col-xl-3 col-sm-6 my-3">
+              <div class="product-card">
+                <div class="product-image">
+                  <% if (item.image && item.image.length> 0) { %>
+                    <img src="<%= item.image[0] %>" alt="<%= item.name %>" />
+                    <% } else { %>
+                      <img src="https://via.placeholder.com/150" alt="No Image Available" />
+                      <% } %>
+                        <div class="action-buttons">
+                          <a href="/api/menu-items/edit/<%= item._id %>">
+                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                          </a>
+                          <a href="/api/menu-items">
+                            <button class="update-btn"><i class="fa-solid fa-plus"></i></button>
+                          </a>
+                          <a href="/api/menu-items/delete/<%= item._id %>">
+                            <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                          </a>
+                        </div>
+                </div>
+                <div class="product-info">
+                  <h2 class="product-name"><i class="fas fa-box-open"></i>
+                    <%= item.name %>
+                  </h2>
+                  <!-- Product Description with Read More link -->
+                  <p class="product-description">
+                    <i class="fas fa-info-circle"></i>
+                    <%= item.description || 'No description available' %>
+                      <span class="read-more">
+                        <a href="/api/menu-items/view/<%= item._id %>">Read More</a>
+                      </span>
+                  </p>
+                  <!-- Product Ingredients with Read More link -->
+                <div class="product-ingredients">
+                  <% if (item.ingredients) { %>
+                    <% let ingredientsArray=item.ingredients.split('\r\n'); %>
+                      <% ingredientsArray.slice(0, 3).forEach(ingredient=> { %>
+                        <div class="ingredient-item">
+                          <i class="fas fa-leaf"></i>
+                          <%= ingredient %>
+                        </div>
+                        <% }) %>
+                          <% if (ingredientsArray.length> 3) { %>
+                            <div class="ingredient-item">
+                              <i class="fas fa-leaf"></i> <a href="read-more-ingredients.html">Read More</a>
+                            </div>
+                            <% } %>
+                              <% } else { %>
+                                <div class="ingredient-item">No ingredients available</div>
+                                <% } %>
+                </div>
+
+                  <div class="price-section">
+                    <span class="price"><i class="fas fa-dollar-sign"></i>
+                      <%= item.price %>
+                    </span>
+                    <span class="discount"><i class="fas fa-tags"></i>
+                      <%= item.discount || 'N/A' %> OFF
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+              <% } else { %>
+                <p>No menu items found matching your search criteria.</p>
+                <% } %>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<%- include("../partial/footer") %>
+

@@ -1,0 +1,116 @@
+<%- include("../partial/cook/header") %>
+
+
+
+    <section class="main_table_items_list">
+        <div class="container-fluid">
+            <div class="heading_wrapper">
+                <h3>Order for Table <span class="done"></span></h3>
+            </div>
+            <ul>
+                <% orders.map((order)=>{%>
+                    <% order.menuItems.map(order=>{%>
+                        <% console.log("menadnn",order) %>
+                            <li>
+                                <div class="item_list_box">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <p>
+                                                <%= order.menuId.name %>
+                                            </p>
+                                            <p>
+                                                <%= order.menuId.description %>
+                                            </p>
+                                            <div class="qnt_table">
+                                                <span>Qnt: <%= order.quantity %></span>
+                                                <span>Table: 2</span>
+                                            </div>
+                                            <div class="switch_main">
+                                                <em class="">Preparing</em>
+                                                <label class="switch">
+                                                    <input type="checkbox" />
+                                                    <span class="slider"></span>
+                                                </label>
+                                                <em class="">Done</em>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="img">
+                                                <img src="<%= order.menuId.image[0] %>" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <% }) %>
+
+
+                                <% }) %>
+
+            </ul>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <%- include("../partial/cook/footer") %>
+
+
+
+
+
+
+
+
+
+
+
+<%- include("../partial/cook/header") %>
+
+
+
+
+
+
+
+
+
+ <div class="container">
+    
+    <h1>Orders</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% orders.forEach(order => { %>
+                <tr>
+                    <td><%= order._id %></td>
+                    <td><%= order.status %></td>
+                    <td>
+                        <form action="/cook/order/update" method="POST">
+                            <input type="hidden" name="orderId" value="<%= order._id %>">
+                            <select name="status">
+                                <option value="pending" <%= order.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                                <option value="preparing" <%= order.status === 'preparing' ? 'selected' : '' %>>Preparing</option>
+                                <option value="ready" <%= order.status === 'ready' ? 'selected' : '' %>>Ready</option>
+                            </select>
+                            <button type="submit">Update Status</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div> 
+<%- include("../partial/cook/footer") %>
+
+
