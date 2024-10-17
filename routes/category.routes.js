@@ -5,7 +5,7 @@ const CategoryController = require("../controllers/category.controller");
 const uploadsingle = require("../middlewares/uploadsingle");
 
 // Route to render the add category form
-router.get("/", authController.protect, CategoryController.addForm);
+router.get("/",CategoryController.addForm);
 router.get("/list",CategoryController.list)
     
 // Route to render the update category form

@@ -47,7 +47,7 @@ class AuthController {
     const token = this.generateToken(admin._id);
     res.cookie("token", token, { httpOnly: true });
      req.flash("success_msg", "Admin registered successfully");
-    res.redirect("/api/menu-items");
+    res.redirect("/api/table");
   };
 
   // Login Admin
@@ -67,7 +67,8 @@ class AuthController {
     res.cookie("token", token, { httpOnly: true });
          req.flash("success_msg", "Admin login successfully");
 
-    res.redirect("/api/menu-items");
+    res.redirect("/api/table");
+
   };
 
   // Logout Admin

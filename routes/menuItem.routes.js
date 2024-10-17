@@ -3,7 +3,7 @@ const MenuItemController=require("../controllers/menuItem.controller")
 const upload=require("../middlewares/upload")  
 const authController=require("../controllers/admin.controller")
 
-router.get("/", authController.protect ,MenuItemController.addForm)
+router.get("/", MenuItemController.addForm)
 // Route to list menu items
 router.get("/list", MenuItemController.list);
 
@@ -14,7 +14,7 @@ router.get("/view/:id", MenuItemController.view);
 router.post("/add", upload.single("image"), MenuItemController.add);
 
 // Route to update an existing menu item
-router.get("/edit/:id",MenuItemController.edit)
+router.get("/edit/:id",MenuItemController.edit);
 router.post("/update/:id", upload.single("image"), MenuItemController.update);
 
 // Route to delete a menu item (soft delete)
@@ -23,7 +23,10 @@ router.get("/delete/:id", MenuItemController.delete);
 // Route to search menu items
 router.get("/search", MenuItemController.search);
 // router.get("/searching",MenuItemController.searchcategoryandmenu)
-router.get("/searched",MenuItemController.searchMenuItems)
+router.get(
+  "/searched",
+ MenuItemController.searchMenuItems
+);
 
 module.exports=router;
 

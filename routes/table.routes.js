@@ -29,7 +29,7 @@ router.get("/view-order",
 router.get("/admin/tables", TableBookingController.getAvailableTables); // Render tables
 router.get("/admin/orders", TableBookingController.getOrdersForAdmin); // Render orders
 
-router.get("/table",AdminController.protect, TableController.addForm)
+router.get("/table", TableController.addForm)
 router.get("/table/edit/:id",TableController.editForm)
 router.post("/table/add",TableController.add)
 router.post("/table/update/:id",TableController.update)
