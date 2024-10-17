@@ -4,7 +4,8 @@
   "description": "Brewer's_Cafe_Backend_By_Sontu_Mondal",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "build":"npm install"
   },
   "author": "Sontu Mondal",
   "license": "ISC",
