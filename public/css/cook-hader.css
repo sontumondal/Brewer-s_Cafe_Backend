@@ -248,7 +248,7 @@ ul{
     }
 
     .main_nav .top ul {
-        justify-content: start;
+        justify-content: center;
         gap: 9px;
     }
     .main_nav .top .title{
@@ -271,7 +271,7 @@ ul{
         gap: 18px;
     }
     .main_table_list ul li{
-        width: calc(100% / 3);
+        width: calc(100% / 2.8);
     }
     .nav_list_main .list ul{
         text-align: center;

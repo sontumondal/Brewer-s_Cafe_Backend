@@ -49,6 +49,7 @@ body {
      align-items: center;
      flex-direction: column;
      gap: 10px;
+     margin-top: 12px;
  }
 
  .modal-content .main_form_wrapper form {

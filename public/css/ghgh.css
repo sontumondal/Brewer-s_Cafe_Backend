@@ -201,7 +201,8 @@
         object-fit: contain;
         object-position: right center;
         /* max-height: 55vh; */
-        width: 74%;
+        /* width: 74%; */
+        width: 57vh;
     }
 
     .bottom_img_wrapper {
@@ -210,6 +211,7 @@
         /* display: flex;
     align-items: end; */
         max-height: 59vh;
+        margin-top: 6vh;
     }
 
     .bottom_img_wrapper::after {
@@ -247,9 +249,14 @@
         .main_cook_form.waiter .main_logo {
             top: 54%;
         }
-                .main_cook_form.waiter .main_wrapper {
-                    width: 95%;
-                    margin-left: 0;
-                    margin: auto;
-                }
+
+        .main_cook_form.waiter .main_wrapper {
+            width: 95%;
+            margin-left: 0;
+            margin: auto;
+        }
+
+        .waiter_png_main{
+            width: 48vh;
+        }
     }
