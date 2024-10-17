@@ -216,7 +216,27 @@ ul{
     font-size: 16px;
     font-weight: 600;
 }
+.side_nav_list .icon i{
+    color: #fff;
+    font-size: 22px;
+}
+.side_nav_list a{
+    text-decoration: none;
+    color: #fff;
+    opacity: 70%;
+}
+.side_nav_list a:hover{
+    opacity: 100%;
+    color: #fff;
+}
+.main_table_list{
+    margin-top: 20px;
+}
+.for_overflow_quick{
+    overflow-x: hidden;
+    /* height: 100vh; */
 
+}
 @media screen and (max-width: 600px) {
     .nav_list_main .list ul {
         font-size: 14px;
@@ -333,8 +353,12 @@ ul{
     border-bottom: 1px solid #bdbdbd;
     margin-bottom: 25px;
 }
+.main_table_items_list{
+    margin: 20px 0;
+}
 .main_table_items_list h3{
-    font-size: 22px;
+    font-size: 25px;
+    font-weight: 600;
 }
 .main_table_items_list h3 .done{
     color: green;
