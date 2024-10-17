@@ -91,9 +91,9 @@ p{
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1023px) {
     .top_img{
-        max-width: 394px;
+        max-width: 52vh;
     }
     .main_cook_form{
         align-items: end;
@@ -101,6 +101,12 @@ p{
     }
     .main_cook_form .main_wrapper{
         padding-bottom: 17vh;
+    }
+    .right_img{
+        max-width: 40vh;
+    }
+    .main_logo{
+        max-width: 20vh;
     }
 }
 @media screen and (max-width: 585px) {

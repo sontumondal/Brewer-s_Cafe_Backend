@@ -26,7 +26,7 @@
     }
 
     .main_cook_form {
-        display: flex;
+        /* display: flex; */
         align-items: center;
         justify-content: center;
         height: 100vh;
@@ -201,7 +201,7 @@
         object-fit: contain;
         object-position: right center;
         /* max-height: 55vh; */
-        width: 57%;
+        width: 74%;
     }
 
     .bottom_img_wrapper {
@@ -234,7 +234,7 @@
         left: 20px;
         z-index: 3;
         position: absolute;
-        max-width: 145px;
+        max-width: 20vh;
     }
 
     @media screen and (max-width: 1023px) {
@@ -245,7 +245,7 @@
 
     @media screen and (max-width: 600px) {
         .main_cook_form.waiter .main_logo {
-            top: 34%;
+            top: 54%;
         }
                 .main_cook_form.waiter .main_wrapper {
                     width: 95%;

@@ -239,8 +239,12 @@ ul{
 }
 @media screen and (max-width: 600px) {
     .nav_list_main .list ul {
-        font-size: 14px;
+        font-size: 13px;
         height: 100%;
+        padding: 7px;
+    }
+    .nav_list_main .list ul li strong{
+        font-size: 19px !important;
     }
 
     .main_nav .top ul {
@@ -248,7 +252,7 @@ ul{
         gap: 9px;
     }
     .main_nav .top .title{
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .side_nav_list {
