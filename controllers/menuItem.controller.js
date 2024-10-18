@@ -1,20 +1,32 @@
 const MenuItem = require("../models/menuItem.model");
 const Category = require("../models/category.model");
 class MenuItemController {
-  async addForm(req, res) {
+   async addForm(req, res) {
     try {
+      // Attempt to fetch categories from the database
       const categories = await Category.find();
+
+      if (!categories || categories.length === 0) {
+        console.error("No categories found in the database");
+        throw new Error("No categories available. Please add some categories.");
+      }
+
+      // Render the form with fetched categories
       res.render("menuitems/add", {
         title: "MenuItem Management",
         categories,
       });
     } catch (error) {
-      console.log("menutitem addform error", error);
-      res
-        .status(500)
-        .render("error", { message: "Error fetching menu items addform." });
+      // Detailed logging for production issues
+      console.error("MenuItem addForm production error:", error);
+
+      // Return detailed error in production log, but user-friendly message to the user
+      res.status(500).render("error", {
+        message: "Error fetching menu items add form. Please try again later.",
+      });
     }
   }
+
 
   // List all menu items (both for EJS view and API)
   async list(req, res) {
