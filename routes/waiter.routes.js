@@ -2,7 +2,7 @@ const router = require("express").Router();
 const WaiterController = require("../controllers/waiter.controller");
 
 // Middleware to protect routes
-router.use(WaiterController.protect);
+// router.use(WaiterController.protect);
 
 
 router.get("/",(req,res)=>{
