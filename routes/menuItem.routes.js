@@ -3,7 +3,7 @@ const MenuItemController=require("../controllers/menuItem.controller")
 const upload=require("../middlewares/upload")  
 const authController=require("../controllers/admin.controller")
 
-router.get("/", MenuItemController.addForm)
+router.get("/",upload.single("image"), MenuItemController.addForm)
 // Route to list menu items
 router.get("/list", MenuItemController.list);
 

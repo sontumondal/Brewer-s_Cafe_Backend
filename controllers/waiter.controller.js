@@ -49,8 +49,11 @@ class WaiterController {
 
     // Generate JWT and store in cookies
     const token = this.generateToken(waiter._id);
-    res.cookie("token", token, { httpOnly: true });
-    res.redirect("/waiter/tables");
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production", // Secure cookies in production
+    sameSite: "strict", // Prevent cross-site request
+  });    res.redirect("/waiter/tables");
   };
 
   // Login waiter
@@ -66,8 +69,12 @@ class WaiterController {
 
     // Generate JWT and store in cookies
     const token = this.generateToken(waiter._id);
-    res.cookie("token", token, { httpOnly: true });
-    res.redirect("/waiter/tables");
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production", // Secure cookies in production
+    sameSite: "strict", // Prevent cross-site request
+  });
+      res.redirect("/waiter/tables");
   };
 
   // Logout waiter

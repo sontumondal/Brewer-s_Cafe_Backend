@@ -45,8 +45,12 @@ class CookController {
 
     // Generate JWT and store in cookies
     const token = this.generateToken(cook._id);
-    res.cookie("token", token, { httpOnly: true });
-    res.redirect("/cook/tables");
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production", // Secure cookies in production
+    sameSite: "strict", // Prevent cross-site request
+  });
+      res.redirect("/cook/tables");
   };
 
   // Login cook
@@ -61,8 +65,11 @@ class CookController {
 
     // Generate JWT and store in cookies
     const token = this.generateToken(cook._id);
-    res.cookie("token", token, { httpOnly: true });
-    res.redirect("/cook/tables");
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production", // Secure cookies in production
+    sameSite: "strict", // Prevent cross-site request
+  });    res.redirect("/cook/tables");
   };
 
   // Logout cook
@@ -145,7 +152,8 @@ class CookController {
     try {
       // Fetch the table details
       const table = await Table.findById(tableId);
-
+      // Count total orders by status
+      const totalOrdersCount = await Order.countDocuments();
       // Fetch orders for the specified table
       const orders = await Order.find({ table: tableId }).populate(
         "menuItems.menuId"
@@ -175,6 +183,7 @@ class CookController {
         tableId,
         tableNumber: table.tableNumber, // Assuming the table model has a 'number' field
         orders,
+        totalOrdersCount,
         deliveredCount,
         pendingCount,
         preparingCount,
